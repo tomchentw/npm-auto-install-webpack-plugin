@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+- '4'
+script:
+- npm run test:cov
+after_script:
+- if [[ `node --version` == *v4* ]]; then cat ./coverage/lcov.info | ./node_modules/.bin/codeclimate-test-reporter;
+  fi
+env:
+  global:
+    secure: p4cIWWEagnDVsSL/Fqt81k2KYjOM4d+/XA8t4NjMvv+H5KoEJ8uvvcvLOVM6rAEUYY3s0/Gz7L//6B9dyvp95qOEXNt87R2t5AlljANZFPoessyfhK44XgpXvUsxrhGtgiJWQd8087wSXbZf4EDV9XgCe3hF5Rtw2HFv09/cquRxPQqrlHZP58hwuJuAGK+PwMCoUFF4729BKj1FsLR4Ia1htbfjt9zWXarqeDoRfx1SkXFo3HJjUj/bUKSI44HWLJgH04mjHS6wy3Wc+FgL9Zv/4csQ05ohJm2fIxorecEn+byh8+285yjl7r0b9Edv76nKCJzxWEeGwiPmr/hUT8Pp1J69MB1FtPck79GW3IfXdJD8I6Dd8n9uIKoZsMydp3k7FFW16erg7lC73+TSWk45djLPBiG8nvGp25Mf+tE47KYT4aliToB710hzgI/hLOtj+uwoTofTRfv8sc2mVlYKJv/iqjuJJR3p357hJCcFc7tiTXqz1/0BhXjdYekfwZV3Zrg5mXrtnGh5gYBfj4UdDIp68MlORBjXK38Z5cu5j2VIlU343DooVv4I4ZRNgq++JXybvW7wQ04TzLx8R/5TH5RnFYq3kgJSyP+kj4Ix+8HHfKe9iQWu7t3RoY6xeIgsqgPgKGgCdHrkxDo3h27a/PGVtBJFVmF+nY1ZId0=
