@@ -1,9 +1,6 @@
 {
   "parser": "babel-eslint",
-  "extends": [
-    "airbnb/base",
-    "airbnb/rules/strict",
-  ],
+  "extends": "airbnb",
   "env": {
     "browser": true,
     "mocha": true,
@@ -32,5 +29,7 @@
     "no-underscore-dangle": [0],
     "quotes": [2, "backtick"],
     // React extensions
+    "react/sort-comp": [1],
+    "react/prop-types": [1],
   }
 }
