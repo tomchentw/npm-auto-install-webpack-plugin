@@ -1,5 +1,5 @@
 # npm-auto-install-webpack-plugin [![Travis CI][travis-image]][travis-url] [![Quality][codeclimate-image]][codeclimate-url] [![Coverage][codeclimate-coverage-image]][codeclimate-coverage-url] [![Dependencies][gemnasium-image]][gemnasium-url] [![Gitter][gitter-image]][gitter-url]
-> Glob all files that are not compiled by webpack under webpack's context
+> Auto installing missing dependencies in package.json before webpack compilation step
 
 [![Version][npm-image]][npm-url]
 

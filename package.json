@@ -1,7 +1,7 @@
 {
   "name": "npm-auto-install-webpack-plugin",
   "version": "0.0.0",
-  "description": "",
+  "description": "Auto installing missing dependencies in package.json before webpack compilation step",
   "main": "lib/index.js",
   "files": [
     "lib/",
