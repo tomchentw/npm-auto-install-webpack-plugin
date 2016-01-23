@@ -1,4 +1,12 @@
 import {
+  exec as nodeExec,
+} from "child_process";
+
+import {
+  default as thenify,
+} from "thenify";
+
+import {
   default as webpack,
 } from "webpack";
 
@@ -7,12 +15,8 @@ import {
 } from "memory-fs";
 
 import {
-  default as thenify,
-} from "thenify";
-
-import {
-  exec as nodeExec,
-} from "child_process";
+  default as validateNpmPackageName,
+} from "validate-npm-package-name";
 
 const exec = thenify(nodeExec);
 
@@ -56,13 +60,21 @@ export class NpmAutoInstallWebpackPlugin {
     const webpackStats = await thenify(::webpackCompiler.run)();
     const { errors } = webpackStats.toJson();
 
-    return errors
+    const rawModuleList = errors
       .map(error => {
         if (/Module not found: Error: Cannot resolve module '(\S+)' in/.test(error)) {
           return RegExp.$1;
         }
       })
       .filter(it => !!it);
+
+    const areAllModuleValid = rawModuleList
+      .every(it => validateNpmPackageName(it).validForNewPackages);
+
+    if (!areAllModuleValid) {
+      throw new Error(`Unexpected module name`);
+    }
+    return rawModuleList;
   }
 
   async _installModuleList(moduleList) {
