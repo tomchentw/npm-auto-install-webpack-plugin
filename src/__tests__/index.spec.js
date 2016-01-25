@@ -18,7 +18,7 @@ import {
   default as NpmAutoInstallWebpackPlugin,
 } from "../index";
 
-test(`NpmAutoInstallWebpackPlugin`, function testUnusedFilesWebpackPlugin(t) {
+test(`NpmAutoInstallWebpackPlugin`, t => {
   const compiler = webpack({
     context: resolvePath(__dirname, `../../`),
     entry: {
