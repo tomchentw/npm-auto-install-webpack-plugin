@@ -1,3 +1,13 @@
+<a name="0.1.3"></a>
+## [0.1.3](https://github.com/tomchentw/npm-auto-install-webpack-plugin/compare/v0.1.2...v0.1.3) (2016-02-08)
+
+
+### Bug Fixes
+
+* **NpmAutoInstallWebpackPlugin:** resolve nested package name ([2e6041b](https://github.com/tomchentw/npm-auto-install-webpack-plugin/commit/2e6041b))
+
+
+
 <a name="0.1.2"></a>
 ## [0.1.2](https://github.com/tomchentw/npm-auto-install-webpack-plugin/compare/v0.1.1...v0.1.2) (2016-01-25)
 
