@@ -18,11 +18,40 @@ import {
   default as NpmAutoInstallWebpackPlugin,
 } from "../index";
 
-test(`NpmAutoInstallWebpackPlugin`, t => {
+test(`NpmAutoInstallWebpackPlugin normal resolve`, t => {
   const compiler = webpack({
     context: resolvePath(__dirname, `../../`),
     entry: {
       client: resolvePath(__dirname, `../__fixtures__/client.fixture.js`),
+    },
+    output: {
+      path: __dirname, // It will be in MemoryFS :)
+    },
+    module: {
+      loaders: [
+        {
+          test: /\.js(x?)$/,
+          exclude: /node_modules/,
+          loader: `babel`,
+        },
+      ],
+    },
+    plugins: [new NpmAutoInstallWebpackPlugin()],
+  });
+  compiler.outputFileSystem = new MemoryFS();
+
+  compiler.run((err, stats) => {
+    t.equal(err, null);
+
+    t.end();
+  });
+});
+
+test(`NpmAutoInstallWebpackPlugin nested resolve`, t => {
+  const compiler = webpack({
+    context: resolvePath(__dirname, `../../`),
+    entry: {
+      client: resolvePath(__dirname, `../__fixtures__/nested.fixture.js`),
     },
     output: {
       path: __dirname, // It will be in MemoryFS :)

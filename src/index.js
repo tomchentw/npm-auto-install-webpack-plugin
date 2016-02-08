@@ -66,7 +66,8 @@ export class NpmAutoInstallWebpackPlugin {
           return RegExp.$1;
         }
       })
-      .filter(it => !!it);
+      .filter(it => !!it)
+      .map(it => it.split(`/`)[0]);
 
     const areAllModuleValid = rawModuleList
       .every(it => validateNpmPackageName(it).validForNewPackages);
