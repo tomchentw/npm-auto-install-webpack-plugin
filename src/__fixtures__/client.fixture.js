@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import {
   default as React,
 } from "react";

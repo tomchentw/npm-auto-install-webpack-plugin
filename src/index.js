@@ -64,6 +64,8 @@ export class NpmAutoInstallWebpackPlugin {
       .map(error => {
         if (/Module not found: Error: Cannot resolve module '(\S+)' in/.test(error)) {
           return RegExp.$1;
+        } else {
+          return undefined;
         }
       })
       .filter(it => !!it)
@@ -79,7 +81,7 @@ export class NpmAutoInstallWebpackPlugin {
   }
 
   async _installModuleList(moduleList) {
-    return exec(`npm install ${ moduleList.join(` `) }`);
+    return exec(`npm install ${moduleList.join(` `)}`);
   }
 }
 
