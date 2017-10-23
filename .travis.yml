@@ -1,11 +1,19 @@
+dist: trusty
+sudo: required
 language: node_js
 node_js:
 - '4'
+- '6'
+- '8'
+before_script:
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- "./cc-test-reporter before-build"
 script:
-- npm run test:cov
+- npm test -- --coverage
 after_script:
-- if [[ `node --version` == *v4* ]]; then cat ./coverage/lcov.info | ./node_modules/.bin/codeclimate-test-reporter;
-  fi
+- if [[ "$TRAVIS_PULL_REQUEST" == "false" && `node --version` == *v8* ]]; then ./cc-test-reporter
+  after-build --exit-code $TRAVIS_TEST_RESULT; fi
 env:
   global:
-    secure: p4cIWWEagnDVsSL/Fqt81k2KYjOM4d+/XA8t4NjMvv+H5KoEJ8uvvcvLOVM6rAEUYY3s0/Gz7L//6B9dyvp95qOEXNt87R2t5AlljANZFPoessyfhK44XgpXvUsxrhGtgiJWQd8087wSXbZf4EDV9XgCe3hF5Rtw2HFv09/cquRxPQqrlHZP58hwuJuAGK+PwMCoUFF4729BKj1FsLR4Ia1htbfjt9zWXarqeDoRfx1SkXFo3HJjUj/bUKSI44HWLJgH04mjHS6wy3Wc+FgL9Zv/4csQ05ohJm2fIxorecEn+byh8+285yjl7r0b9Edv76nKCJzxWEeGwiPmr/hUT8Pp1J69MB1FtPck79GW3IfXdJD8I6Dd8n9uIKoZsMydp3k7FFW16erg7lC73+TSWk45djLPBiG8nvGp25Mf+tE47KYT4aliToB710hzgI/hLOtj+uwoTofTRfv8sc2mVlYKJv/iqjuJJR3p357hJCcFc7tiTXqz1/0BhXjdYekfwZV3Zrg5mXrtnGh5gYBfj4UdDIp68MlORBjXK38Z5cu5j2VIlU343DooVv4I4ZRNgq++JXybvW7wQ04TzLx8R/5TH5RnFYq3kgJSyP+kj4Ix+8HHfKe9iQWu7t3RoY6xeIgsqgPgKGgCdHrkxDo3h27a/PGVtBJFVmF+nY1ZId0=
+    secure: Uidl2ix7gMcbTAgUzL7HG8hayWaehllo1sMDA/T8u/sU7IMw0JRNj7voOSWJ/WxTPIQofEeNdCHWsJxg/j8B4LnCcZHpr64gclMyReqLirpIHQSApusApwYINt+9sLyJMcm/xjdjZlZdXGf2c/jmFe8u80i1vznnbO09A0VdUqVS99I+x/0untA7UNtes4O+4yNTU6fh9aPndv+hGni37nujnub/Wegb2oRXLj2osU5D2mDmUcYTEarZWioixJ2eIB7gDD0AYujHyg9OwncJ10EVn/krFV4tfmw0A7xQpbX+NHwyGUc59b90oPtccTawViViPpu8IHTSsYXViVtw7yd8ydDi67MPSCUp35jY6XzLdI52MgYOeqkz9TEAF1dcOkcVqxuLt0JI49YWa93Wdd4fWJQy3EZvSkMsppXYDUuRFMl1LjwT5AYrjpNuGWnKDodVSfJS3pilSOwvpk18yUJPyKNsGZ63c+PsYwqnpnyWjuoH3mkBYvp0zOWxtiWLUf1Ijty3tue5cS+9StO3fpvARm6FAgrqSZFJm2QWskC/Onjx9oNq6IL9nzBKunMK8ZFbmiVo4NdeulY8ve2++DOZ0Cv/CnSdhzFpuwQVFgawJsrZW/sLFs5pqu+bBV+nWN9BurlmZ6cVRXbh6MZoV5NucCQINj2aDJFiIilESLM=
