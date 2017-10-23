@@ -1,77 +1,67 @@
-import {
-  resolve as resolvePath,
-} from "path";
+import path from "path";
 
-import {
-  default as test,
-} from "tape";
+import MemoryFS from "memory-fs";
+import webpack from "webpack";
+import NpmAutoInstallWebpackPlugin from "../index";
 
-import {
-  default as MemoryFS,
-} from "memory-fs";
+describe(`NpmAutoInstallWebpackPlugin module`, () => {
+  describe(`normal resolve`, () => {
+    it(
+      `should work as expected`,
+      done => {
+        const compiler = webpack({
+          context: path.resolve(__dirname, `../../`),
+          entry: {
+            client: path.resolve(__dirname, `../__fixtures__/client.fixture.js`)
+          },
+          output: {
+            path: __dirname // It will be in MemoryFS :)
+          },
+          plugins: [
+            new NpmAutoInstallWebpackPlugin({
+              useYarn: true
+            })
+          ]
+        });
+        compiler.outputFileSystem = new MemoryFS();
 
-import {
-  default as webpack,
-} from "webpack";
+        compiler.run((err, stats) => {
+          expect(err).toBeFalsy();
 
-import {
-  default as NpmAutoInstallWebpackPlugin,
-} from "../index";
-
-test(`NpmAutoInstallWebpackPlugin normal resolve`, t => {
-  const compiler = webpack({
-    context: resolvePath(__dirname, `../../`),
-    entry: {
-      client: resolvePath(__dirname, `../__fixtures__/client.fixture.js`),
-    },
-    output: {
-      path: __dirname, // It will be in MemoryFS :)
-    },
-    module: {
-      loaders: [
-        {
-          test: /\.js(x?)$/,
-          exclude: /node_modules/,
-          loader: `babel`,
-        },
-      ],
-    },
-    plugins: [new NpmAutoInstallWebpackPlugin()],
+          done();
+        });
+      },
+      10000
+    );
   });
-  compiler.outputFileSystem = new MemoryFS();
 
-  compiler.run((err, stats) => {
-    t.equal(err, null);
+  describe(`nested resolve`, () => {
+    it(
+      `should work as expected`,
+      done => {
+        const compiler = webpack({
+          context: path.resolve(__dirname, `../../`),
+          entry: {
+            client: path.resolve(__dirname, `../__fixtures__/nested.fixture.js`)
+          },
+          output: {
+            path: __dirname // It will be in MemoryFS :)
+          },
+          plugins: [
+            new NpmAutoInstallWebpackPlugin({
+              useYarn: true
+            })
+          ]
+        });
+        compiler.outputFileSystem = new MemoryFS();
 
-    t.end();
-  });
-});
+        compiler.run((err, stats) => {
+          expect(err).toBeFalsy();
 
-test(`NpmAutoInstallWebpackPlugin nested resolve`, t => {
-  const compiler = webpack({
-    context: resolvePath(__dirname, `../../`),
-    entry: {
-      client: resolvePath(__dirname, `../__fixtures__/nested.fixture.js`),
-    },
-    output: {
-      path: __dirname, // It will be in MemoryFS :)
-    },
-    module: {
-      loaders: [
-        {
-          test: /\.js(x?)$/,
-          exclude: /node_modules/,
-          loader: `babel`,
-        },
-      ],
-    },
-    plugins: [new NpmAutoInstallWebpackPlugin()],
-  });
-  compiler.outputFileSystem = new MemoryFS();
-
-  compiler.run((err, stats) => {
-    t.equal(err, null);
-
-    t.end();
+          done();
+        });
+      },
+      10000
+    );
   });
 });

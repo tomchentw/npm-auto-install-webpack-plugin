@@ -1,10 +1,7 @@
-/* eslint-disable import/no-unresolved */
-import {
-  default as React,
-} from "react";
+const React = require("react");
+const ReactDOM = require("react-dom");
 
-import {
-  default as ReactDOM,
-} from "react-dom";
-
-ReactDOM.render(<div />, document.getElementById(`react-container`));
+ReactDOM.render(
+  React.createElement("div"),
+  document.getElementById("react-container")
+);
