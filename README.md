@@ -12,13 +12,26 @@ npm i --save npm-auto-install-webpack-plugin
 
 ## Usage
 
+### `webpack.config.babel.js`
+
 ```js
-// webpack.config.babel.js
 import NpmAutoInstallWebpackPlugin from "npm-auto-install-webpack-plugin";
 
 export default {
   plugins: [
-    new NpmAutoInstallWebpackPlugin(),
+    new UnusedFilesWebpackPlugin(options),
+  ],
+};
+```
+
+### `webpack.config.js`
+
+```js
+const { NpmAutoInstallWebpackPlugin } = require("npm-auto-install-webpack-plugin");
+
+module.exports = {
+  plugins: [
+    new NpmAutoInstallWebpackPlugin(options),
   ],
 };
 ```
@@ -30,11 +43,17 @@ export default {
 new NpmAutoInstallWebpackPlugin(options)
 ```
 
-### options.autoInstall
+### options.disabled
 
-Auto install missing dependencies with `npm install` command.
+Disable auto-installing missing dependencies with the command.
 
-* Default: `true`
+* Default: `false`
+
+### options.useYarn
+
+If true, it will use `yarn add` for installing dependencies instead of `npm install`.
+
+* Default: `false`
 
 
 ## Contributing
