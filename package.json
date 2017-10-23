@@ -1,6 +1,6 @@
 {
   "name": "npm-auto-install-webpack-plugin",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description":
     "Auto installing missing dependencies in package.json before webpack compilation step",
   "license": "MIT",

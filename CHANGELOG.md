@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/tomchentw/npm-auto-install-webpack-plugin/compare/v0.1.4...v0.2.0) (2017-10-23)
+
+
+### Features
+
+* **index.js:** add `options.disabled` and `options.useYarn` ([b043519](https://github.com/tomchentw/npm-auto-install-webpack-plugin/commit/b043519)), closes [#3](https://github.com/tomchentw/npm-auto-install-webpack-plugin/issues/3)
+* **package.json:** add `babel-runtime`, `semver` and `util.promisify` to dependencies ([2de20a3](https://github.com/tomchentw/npm-auto-install-webpack-plugin/commit/2de20a3))
+
+
+
 <a name="0.1.4"></a>
 ## [0.1.4](https://github.com/tomchentw/npm-auto-install-webpack-plugin/compare/v0.1.3...v0.1.4) (2016-05-30)
 
