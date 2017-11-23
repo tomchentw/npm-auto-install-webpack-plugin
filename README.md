@@ -1,7 +1,7 @@
 # npm-auto-install-webpack-plugin
 > Auto installing missing dependencies in package.json before webpack compilation step
 
-[![Version][npm-image]][npm-url] [![Travis CI][travis-image]][travis-url] [![Quality][codeclimate-image]][codeclimate-url] [![Coverage][codeclimate-coverage-image]][codeclimate-coverage-url] [![Dependencies][gemnasium-image]][gemnasium-url] [![Gitter][gitter-image]][gitter-url]
+[![Version][npm-image]][npm-url] [![Travis CI][travis-image]][travis-url] [![Quality][codeclimate-maintainability-image]][codeclimate-maintainability-url] [![Coverage][codeclimate-c-image]][codeclimate-c-url] [![Dependencies][gemnasium-image]][gemnasium-url] [![Gitter][gitter-image]][gitter-url]
 
 
 ## Installation
@@ -72,10 +72,10 @@ If true, it will use `yarn add` for installing dependencies instead of `npm inst
 
 [travis-image]: https://img.shields.io/travis/tomchentw/npm-auto-install-webpack-plugin.svg?style=flat-square
 [travis-url]: https://travis-ci.org/tomchentw/npm-auto-install-webpack-plugin
-[codeclimate-image]: https://img.shields.io/codeclimate/github/tomchentw/npm-auto-install-webpack-plugin.svg?style=flat-square
-[codeclimate-url]: https://codeclimate.com/github/tomchentw/npm-auto-install-webpack-plugin
-[codeclimate-coverage-image]: https://img.shields.io/codeclimate/coverage/github/tomchentw/npm-auto-install-webpack-plugin.svg?style=flat-square
-[codeclimate-coverage-url]: https://codeclimate.com/github/tomchentw/npm-auto-install-webpack-plugin
+[codeclimate-maintainability-image]: https://img.shields.io/codeclimate/maintainability/tomchentw/npm-auto-install-webpack-plugin.svg?style=flat-square
+[codeclimate-maintainability-url]: https://codeclimate.com/github/tomchentw/npm-auto-install-webpack-plugin
+[codeclimate-c-image]: https://img.shields.io/codeclimate/c/tomchentw/npm-auto-install-webpack-plugin.svg?style=flat-square
+[codeclimate-c-url]: https://codeclimate.com/github/tomchentw/npm-auto-install-webpack-plugin
 [gemnasium-image]: https://img.shields.io/gemnasium/tomchentw/npm-auto-install-webpack-plugin.svg?style=flat-square
 [gemnasium-url]: https://gemnasium.com/tomchentw/npm-auto-install-webpack-plugin
 [gitter-image]: https://badges.gitter.im/Join%20Chat.svg
